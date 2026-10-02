@@ -1,6 +1,7 @@
 ---
 title: 博客
-description: 文章、设计记录与版本公告。
+description: 文章与工程笔记。
+comments: false
 type: blog
 icon: fa-solid fa-blog
 sidebar_root_for: self
@@ -15,4 +16,4 @@ cascade:
   reading_time: true
 ---
 
-通过文章、设计决策与版本说明了解项目进展。
+记录做过的事与想明白的道理。

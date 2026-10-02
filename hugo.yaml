@@ -1,9 +1,10 @@
 # OINK Starter — the only site configuration file.
-# Change the two marked values first; everything else builds as-is.
+# Identity, languages, outputs, and optional integrations are configured below.
 
-title: &siteTitle Project Name # CHANGE ME: one shared title for every language
-baseURL: https://example.org/ # CHANGE ME: canonical production URL
-defaultContentLanguage: en
+title: &siteTitle 一叶方舟
+baseURL: https://leafz.net/
+defaultContentLanguage: zh
+disableLanguages: [en, fr]
 enableGitInfo: true
 enableRobotsTXT: true
 enableEmoji: true
@@ -16,7 +17,7 @@ languages:
     weight: 1
     title: *siteTitle
     params:
-      description: Documentation, updates, and guides for your project.
+      description: Blogs, and Documentation, updates, guides for my projects.
   zh:
     label: 简体中文
     locale: zh-CN
@@ -24,7 +25,8 @@ languages:
     title: *siteTitle
     hasCJKLanguage: true
     params:
-      description: 你的项目文档、动态与指南。
+      description: 我的博客、项目文档、动态与指南。
+  # Keep French declared so Hugo recognizes .fr.md as a disabled translation.
   fr:
     label: Français
     locale: fr-FR
@@ -53,8 +55,10 @@ outputs:
 params:
   offline_search: true
   copyright:
-    authors: Project contributors
-    from_year: 2026
+    authors: 猎武神
+    from_year: 2013
+  github_repo: https://github.com/imleafz/leafz.net
+  github_branch: main
   footer_center_info: ''
   ui:
     dark_mode: true
@@ -63,35 +67,32 @@ params:
     sidebar_menu_foldable: true
     sidebar_icon_policy: groups
     backlinks: true
-    # theme_color: '#245f94'
-    # typography: system
-    # image_zoom: true
-    # share: [mastodon, linkedin, email, copy]
+    theme_color: '#1f4e79'
+    typography: technical
+    image_zoom: true
+    share: [email, copy]
+    footer_style: slim
     # feedback:
     #   enable: true
     #   reasons: true
-
-  # Optional repository links. Uncomment after creating your own repository.
-  # github_repo: https://github.com/OWNER/REPOSITORY
-  # github_branch: main
 
   # Optional brand assets. The starter already supplies a neutral logo.
   # logo: icons/logo.svg
   # wordmark: icons/wordmark.svg
 
-  # Optional Giscus comments. Nothing is loaded until the entire block is set.
-  # comments:
-  #   enable: true
-  #   type: giscus
-  #   giscus:
-  #     repo: OWNER/REPOSITORY
-  #     repoId: R_xxxxxxxxxx
-  #     category: Announcements
-  #     categoryId: DIC_xxxxxxxxxx
-  #     mapping: pathname
-  #     inputPosition: bottom
-  #     theme: auto
-  #     loading: lazy
+  # Giscus comments. Loads only when the whole block is set.
+  comments:
+    enable: true
+    type: giscus
+    giscus:
+      repo: imleafz/leafz.net
+      repoId: R_kgDOU43g8A
+      category: Announcements
+      categoryId: DIC_kwDOU43g8M4DG5rj
+      mapping: pathname
+      inputPosition: bottom
+      theme: auto
+      loading: lazy
 
   # Optional layout choice. Theme defaults remain active while commented.
   # page_width: wide

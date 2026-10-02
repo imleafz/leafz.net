@@ -1,37 +1,30 @@
-sections: [hero, cards, cta]
+sections:
+  - hero
+  - type: markdown
+    key: about
 
 hero:
   align: center
-  eyebrow: 开源项目起步模板
+  eyebrow: 个人博客 · 持续更新
   title_lines:
-    - words: [{ text: 你的项目， }]
-    - words: [{ text: 清楚讲明白。 }]
-  lead: 一个可以直接修改的项目首页，容纳文档、动态与长篇指南。
+    - words: [{ text: 把想明白的事， }]
+    - words: [{ text: 写下来。 }]
+  lead: 以文字对抗遗忘 —— 工程、技术，以及一路上的思考。
   actions:
-    - { label: 阅读文档, url: docs/, icon: fa-solid fa-book, style: primary }
-    - { label: 跟随教程, url: book/, icon: fa-solid fa-arrow-right, style: ghost }
+    - { label: 阅读博客, url: blog/, icon: fa-solid fa-pen-nib, style: primary }
 
-cards:
-  eyebrow: 从清晰结构开始
-  title: 每类内容都有自己的位置
-  columns: 3
-  items:
-    - title: 博客
-      desc: 发布文章、设计记录与版本公告。
-      icon: fa-solid fa-pen-nib
-      url: blog/
-    - title: 文档
-      desc: 按简介、快速上手、教程与参考组织资料。
-      icon: fa-solid fa-book-open
-      url: docs/
-    - title: 书籍
-      desc: 用连续的阅读体验讲清一套完整工作流。
-      icon: fa-solid fa-graduation-cap
-      url: book/
+about:
+  eyebrow: 关于本站
+  title: 一叶方舟，从这里开始
+  body: |
+    这是「猎武神」的个人博客。「一叶方舟」——一片叶子，也能载着想法渡河。
 
-cta:
-  title: 把这个模板变成你的站点。
-  text: 修改项目名称与网址，替换示例文案，然后发布。
-  label: 开始使用
-  url: docs/get-started/
-  style: primary
+    这里把工程实践、技术思考和偶尔的生活片段写下来。更新不快，但尽量写清楚：一件事为什么这样做、踩过哪些坑、后来又是怎么想明白的。
+
+    常写的话题：
+
+    - 工程实践与踩坑复盘
+    - 工具、效率与一点方法
+    - 读书与生活随想
+
+    可以从 [博客文章](/blog/post/) 开始，或直接读 [最近的一篇](/blog/post/e-piano-playing-records/)。

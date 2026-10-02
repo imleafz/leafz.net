@@ -1,0 +1,6 @@
+// 站点级样式覆盖。首页内容较短时，主题外壳的 min-height:100vh 会让 main
+// 的 flex-grow 在 hero 与页脚之间留出一大块空白；首页取消这个最小高度，
+// 让页脚紧跟内容，其余页面保持原样。
+.td-home .td-outer {
+  min-height: auto;
+}
