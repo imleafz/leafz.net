@@ -5,7 +5,7 @@ Hugo 站点，主题通过 Go Module 引用 **OINK**。所有建站、配置、�
 ## 必备上下文
 
 - 不需要 Node/npm。构建只依赖 Git、Go 1.27+、Hugo Extended。工具由 `mise.toml` 固定（go 1.27、hugo-extended-withdeploy），先 `mise install`。
-- 主题 OINK **不复制进本仓库**，以 Go Module 固定在 `go.mod` / `go.sum`（`github.com/pgsty/oink v1.1.0`）。两者都要提交。
+- 主题 OINK **不复制进本仓库**，以 Go Module 固定在 `go.mod` / `go.sum`（`github.com/pgsty/oink v1.2.0`）。两者都要提交。
 - `defaultContentLanguage: zh` + `disableLanguages: [en, fr]`：**仅中文站点**，服务于站点根。英文同为声明但禁用，语言菜单不出现。英文内容以无后缀基础 `.md` 存放，被同名 `.zh.md` 覆盖；若新增一个只有英文、没有 `.zh.md` 对页的文件，它会以英文渲染进中文站且无告警，务必成对维护。
 
 ## 命令
@@ -35,7 +35,7 @@ hugo mod graph | grep github.com/pgsty/oink   # 查看实际解析到的主题�
 
 - `go.mod` + `go.sum`（固定并校验 OINK 版本）。
 - `hugo.yaml` 中三项 Goldmark 设置（原生 Steps/Cards/Fields 与图片属性依赖它们）。
-- `outputs` 中已开启的 `markdown` / `LLMS` / `print`（Agent 输出、全文包、打印表面）。
+- `outputs` 中已开启的 `markdown` / `LLMS` / `print` / `NAVJSON`（Agent 输出、全文包、打印表面、导航树）。
 - workflow 里的 `fetch-depth: 0`（`enableGitInfo: true` 需要完整 Git 历史）。
 - CI 的 `GOWORK: off` 与 `HUGO_MODULE_WORKSPACE: off`：本地 workspace 覆盖不得混入 CI。
 
@@ -48,7 +48,7 @@ hugo mod graph | grep github.com/pgsty/oink   # 查看实际解析到的主题�
 
 ## 站点现状与入口
 
-已定制为「一叶方舟」个人站：身份 / URL / 全部集成在 `hugo.yaml`；首页数据 `data/home/zh.yaml`（`sections` 为 `hero` + 一个 `type: markdown, key: about` 的「关于本站」）；内容只剩 `content/blog/`（文章放 `content/blog/post/`）。站点 SCSS 覆盖在 `assets/scss/_styles_project.scss`，其中 `.td-home .td-outer { min-height: auto }` 用于消除首页 hero 与页脚之间的空白（主题默认 `min-height:100vh` + `.td-main{flex-grow:1}` 会在内容不足时把页脚顶到底部）。已删除 `docs/`、`book/` 栏目、`examples/` profile，以及被禁用的英法内容与 `i18n/fr.yaml`。Logo 在 `assets/icons/logo.svg`，favicon 在 `static/favicon.svg`。Giscus 评论已接入；`feedback`、`page_width`、Google Analytics 仍为注释。README 是上游模板文档，部分指向已删内容，以本文件与实际配置为准。
+已定制为「一叶方舟」个人站：身份 / URL / 全部集成在 `hugo.yaml`；首页数据 `data/home/zh.yaml`（`sections` 为 `hero` + 一个 `type: markdown, key: about` 的「关于本站」）；内容只剩 `content/blog/`（文章放 `content/blog/post/`）。外观采用 OINK 1.2 的 **Paper** 预设（`params.ui.preset: paper`），并开 `preset_menu: true` 让读者在导航栏「外观」菜单里切换 Paper/Slate 与明暗；评论 iframe 按预设加载 `public/css/giscus-paper-*-bundle.css`，本地预览靠 `hugo.yaml` 的 `server.headers` 放行 CORS（线上 GitHub Pages 自带该响应头）。Agent 输出除每页 `.md` / `llms.txt` 外，首页出 `navigation.json`，博客栏目出 `blog/llms-full.txt`（front matter `outputs` 整体替换，改动时写全）。站点 SCSS 覆盖在 `assets/scss/_styles_project.scss`，其中 `.td-home .td-outer { min-height: auto }` 用于消除首页 hero 与页脚之间的空白（主题默认 `min-height:100vh` + `.td-main{flex-grow:1}` 会在内容不足时把页脚顶到底部）。已删除 `docs/`、`book/` 栏目、`examples/` profile，以及被禁用的英法内容与 `i18n/fr.yaml`。Logo 在 `assets/icons/logo.svg`，favicon 在 `static/favicon.svg`。Giscus 评论已接入；`feedback`、`page_width`、Google Analytics 仍为注释。README 是上游模板文档，部分指向已删内容，以本文件与实际配置为准。
 
 ## 相关文档页
 

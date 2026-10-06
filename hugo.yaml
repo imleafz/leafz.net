@@ -48,7 +48,7 @@ markup:
     noClasses: false
 
 outputs:
-  home: [HTML, RSS, markdown, LLMS]
+  home: [HTML, RSS, markdown, LLMS, NAVJSON]
   page: [HTML, markdown]
   section: [HTML, RSS, print, markdown]
 
@@ -61,6 +61,10 @@ params:
   github_branch: main
   footer_center_info: ''
   ui:
+    # Visual preset (OINK 1.2+). paper is the new default; slate keeps the 1.1 look.
+    # preset_menu lets readers switch style and light/dark from the navbar.
+    preset: paper
+    preset_menu: true
     dark_mode: true
     section_index: cards
     blog_index: cards
@@ -108,3 +112,12 @@ module:
   hugoVersion:
     extended: true
     min: 0.160.1
+
+# 仅供 hugo server 本地预览：giscus iframe 从 giscus.app 跨源加载本机的
+# 预设样式表（/css/giscus-*-bundle.css），需要放行 CORS 才能预览评论主题。
+# 线上（GitHub Pages）自带 access-control-allow-origin: *，无需此项。
+server:
+  headers:
+    - for: /css/**
+      values:
+        Access-Control-Allow-Origin: '*'
