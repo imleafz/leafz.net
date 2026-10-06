@@ -62,9 +62,10 @@ params:
   footer_center_info: ''
   ui:
     # Visual preset (OINK 1.2+). paper is the new default; slate keeps the 1.1 look.
-    # preset_menu lets readers switch style and light/dark from the navbar.
+    # preset_menu lists the reader-switchable styles and must include the site default
+    # (paper); ink and terminal are the two experimental presets, opted in explicitly.
     preset: paper
-    preset_menu: true
+    preset_menu: [paper, slate, ink, terminal]
     dark_mode: true
     section_index: cards
     blog_index: cards
